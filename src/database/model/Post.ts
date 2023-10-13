@@ -18,7 +18,7 @@ const schema = new Schema(
       required: true,
       select: false,
     },
-    updateAt: {
+    updatedAt: {
       type: Schema.Types.Date,
       required: true,
       select: false,

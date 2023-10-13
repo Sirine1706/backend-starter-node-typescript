@@ -1,15 +1,14 @@
 import express from 'express';
-import access  from './access/access';
+import access from './access/access';
 import profile from './user/profile';
-import users from './user/user'
-
+import users from './user/user';
+import posts from './post/post';
 
 const router = express.Router();
 
 router.use('/', access);
 router.use('/profile', profile);
-router.use('/users', users)
-
-
+router.use('/users', users);
+router.use('/posts', posts);
 
 export default router;
