@@ -6,9 +6,9 @@ import posts from './post/post';
 
 const router = express.Router();
 
+router.use('/posts', posts);
 router.use('/', access);
 router.use('/profile', profile);
 router.use('/users', users);
-router.use('/posts', posts);
 
 export default router;
