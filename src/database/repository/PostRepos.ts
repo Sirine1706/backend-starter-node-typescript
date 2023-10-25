@@ -1,4 +1,7 @@
+import { ApiOptions } from 'app-request';
 import { Types } from 'mongoose';
+import { Pagination, PaginationModel } from 'mongoose-paginate-ts';
+import { PagingObj } from 'pagination';
 import { Post, PostModel } from '../model/Post';
 
 export default class PostRepos {
@@ -22,11 +25,16 @@ export default class PostRepos {
       .lean<Post>()
       .exec();
   }
-  public static async update(post: Post): Promise<Post | null> {
+  public static update(post: Post): Promise<Post | null> {
     post.updatedAt = new Date();
-    const updatedPost = await PostModel.findByIdAndUpdate(post._id, post, { new: true })
-      .lean()
-      .exec();
-    return updatedPost;
+
+    return PostModel.findByIdAndUpdate(post._id, post, { new: true }).lean().exec();
   }
+  // public static findAll(
+  //   paging: PagingObj,
+  //   query: object,
+  //   apiOptions: ApiOptions,
+  // ): Promise<PaginationModel<Post>> {
+    
+  // }
 }

@@ -14,22 +14,5 @@ export const checkPost = asyncHandler(async (req: DataRequest, res: Response, ne
   req.post = isPostExist;
   next();
 });
-// when authentication is required
-export const findPostWhenAuthenticated = asyncHandler(
-  async (req: ProtectedDataRequest, res: Response, next) => {
-    const isPostExist = await PostRepos.findById(new Types.ObjectId(req.params.id));
-    if (!isPostExist) {
-      return next(new NotFoundError('Post not found'));
-    }
-    req.post = isPostExist;
-    next();
-  },
-);
-export const isPostAuthor = asyncHandler(
-  async (req: ProtectedDataRequest, res: Response, next: NextFunction) => {
-    if (req.user._id.toString() !== req.post.author._id.toString()) {
-      return next(new ForbiddenResponse('Your are not authorized to perform such an action'));
-    }
-    next();
-  },
-);
+
+

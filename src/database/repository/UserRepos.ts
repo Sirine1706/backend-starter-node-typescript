@@ -7,12 +7,7 @@ import Keystore from '../model/KeyStore';
 import { PaginationModel } from 'mongoose-paginate-ts';
 import APIFeatures from '../../helpers/apiFeatures';
 import { ApiOptions } from 'app-request';
-// import uuid4 from "uuid4";
-
-type pagingObj = {
-  limit: number;
-  page: number;
-};
+import { PagingObj } from 'pagination';
 export default class UserRepo {
   // contains critical information of the user
   public static findById(id: Types.ObjectId): Promise<User | null> {
@@ -64,14 +59,13 @@ export default class UserRepo {
   }
 
   public static async findAll(
-    paging: pagingObj,
+    paging: PagingObj,
     query: object,
     apiOptions: ApiOptions,
   ): Promise<PaginationModel<User>> {
     let findAllQuery = apiOptions.deleted
       ? UserModel.find({ deletedAt: { $ne: null } })
       : UserModel.find({ deletedAt: null });
-
     const features = new APIFeatures(findAllQuery, query)
       .filter()
       .sort()
