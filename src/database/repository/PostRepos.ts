@@ -1,7 +1,6 @@
 import { ApiOptions } from 'app-request';
 import { Types } from 'mongoose';
 import { PaginationModel } from 'mongoose-paginate-ts';
-import { userInfo } from 'os';
 import { PagingObj } from 'pagination';
 import APIFeatures from '../../helpers/apiFeatures';
 import { Post, PostModel } from '../model/Post';
