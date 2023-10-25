@@ -19,7 +19,7 @@ export const getAllUsers = asyncHandler(async (req: ProtectedRequest, res) => {
     });
    
     const { docs, ...meta } = users; 
-    new SuccessResponse('All users returned successfuly', {
+    new SuccessResponse('All users returned successfully', {
         docs,
         meta
       }).send(res);

@@ -11,12 +11,7 @@ const router = express.Router();
 
 router.use('/', authentication, role(RoleCode.ADMIN), authorization);
 
-router.get('/all',
-   getAllUsers  
-)
+router.get('/all', getAllUsers);
 
-router.delete('/:id',
-   validator(schema.userId, ValidationSource.PARAM),
-   deleteUser  
-)
+router.delete('/:id', validator(schema.userId, ValidationSource.PARAM), deleteUser);
 export default router;

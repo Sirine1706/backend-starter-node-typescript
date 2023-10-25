@@ -34,7 +34,6 @@ export default class UserRepo {
   }
 
   public static findProfileById(id: Types.ObjectId): Promise<User | null> {
-
     return UserModel.findOne({ _id: id, status: true })
       .select('+name +lastname +roles +email')
       .populate({

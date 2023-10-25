@@ -14,7 +14,7 @@ export interface Post extends Document {
 const schema = new Schema(
   {
     title: Schema.Types.String,
-    url: { type: Schema.Types.String, unique: true, trim: true },
+    url: { type: Schema.Types.String, trim: true },
     author: {
       type: Schema.Types.ObjectId,
       ref: 'User',
