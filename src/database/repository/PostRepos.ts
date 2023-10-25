@@ -24,15 +24,9 @@ export default class PostRepos {
   }
   public static async update(post: Post): Promise<Post | null> {
     post.updatedAt = new Date();
-    console.log('object', post);
-    const updatedPost = 
-     await PostModel.updateOne(
-      { _id: post._id },
-      { title: 'optimization of web scraping in PYTHON' },
-    )
+    const updatedPost = await PostModel.findByIdAndUpdate(post._id, post, { new: true })
       .lean()
       .exec();
-   
     return updatedPost;
   }
 }
